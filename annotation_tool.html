@@ -158,10 +158,10 @@ async function loadData() {
 function renderLogin() {
   const list = document.getElementById('annotator-list');
   list.innerHTML = '';
+  const total = DATA.length;
   ANNOTATORS.forEach(name => {
     const saved = getSaved(name);
     const count = saved ? Object.keys(saved.answers || {}).length : 0;
-    const total = 100;
     const done = count >= total;
     const btn = document.createElement('button');
     btn.className = 'annotator-btn' + (done ? ' done' : '');
@@ -180,8 +180,7 @@ function saveProgress() {
 
 function startAnnotation(name) {
   currentAnnotator = name;
-  const idx = ANNOTATORS.indexOf(name);
-  myData = DATA.filter(d => d.annotator === name);
+  myData = DATA;
   const saved = getSaved(name);
   answers = saved ? (saved.answers || {}) : {};
   currentIdx = 0;
