@@ -147,7 +147,7 @@ let currentIdx = 0;
 
 async function loadData() {
   try {
-    const resp = await fetch('data.json');
+    const resp = await fetch('./data.json');
     DATA = await resp.json();
   } catch(e) {
     DATA = EMBEDDED_DATA;
